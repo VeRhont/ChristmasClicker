@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5875944339265069279}
   - component: {fileID: 5875944339265069278}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,9 +96,9 @@ GameObject:
   - component: {fileID: 5875944339300820988}
   - component: {fileID: 5875944339300820989}
   - component: {fileID: 2005309849}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -178,5 +178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a4747145e9e0a41a9b6d2adc19cdd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
   _speed: 2.5
+  _maxHealth: 100
+  _damageOnClick: 20
