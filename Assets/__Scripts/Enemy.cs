@@ -5,7 +5,9 @@ public class Enemy : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private float _speed;
     [SerializeField] private int _maxHealth;
+    [SerializeField] private int _enemyDamage;
     [SerializeField] private int _damageOnClick;
+    [SerializeField] private int _damageFromSnowball;
     private int _health;
 
     private Rigidbody2D _enemyRb;
@@ -14,7 +16,7 @@ public class Enemy : MonoBehaviour, IPointerClickHandler
     private void Awake()
     {
         _enemyRb = GetComponent<Rigidbody2D>();
-        //_enemyAnimator = GetComponent<Animator>();
+        _enemyAnimator = GetComponentInChildren<Animator>();
 
         _health = _maxHealth;
     }
@@ -42,5 +44,24 @@ public class Enemy : MonoBehaviour, IPointerClickHandler
     private void Die()
     {
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Snowball"))
+        {
+            TakeDamage(_damageFromSnowball);
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("Barricade"))
+        {
+            _enemyAnimator.SetTrigger("Attack");
+            collision.gameObject.GetComponent<Barricade>().TakeDamage(_enemyDamage);
+        }
+        if (collision.gameObject.CompareTag("Cannon"))
+        {
+            _enemyAnimator.SetTrigger("Attack");
+            collision.gameObject.GetComponent<Cannon>().TakeDamage(_enemyDamage);
+        }
     }
 }
