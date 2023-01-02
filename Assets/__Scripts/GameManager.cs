@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     private int _coinsPerSecond = 0;
 
     [Header("UI")]
-    [SerializeField] private TextMeshProUGUI _scoreText;
+    [SerializeField] private TextMeshProUGUI _roomScoreText;
+    [SerializeField] private TextMeshProUGUI _outsideScoreText;
 
     private float _timer = 1f;
 
@@ -38,13 +39,13 @@ public class GameManager : MonoBehaviour
     public void Click()
     {
         _score += _coinsForClick;
-
         UpdateScore();
     }
 
     public void UpdateScore()
     {
-        _scoreText.SetText($"Score: {_score}");
+        _roomScoreText.SetText($"Score: {_score}");
+        _outsideScoreText.SetText($"Score: {_score}");
     }
 
     public void DecreaseScore(int value)
