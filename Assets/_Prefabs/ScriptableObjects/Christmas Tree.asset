@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79005a1a4b58b54408f4c3f1a791dcfc, type: 3}
   m_Name: Christmas Tree
   m_EditorClassIdentifier: 
-  _image: {fileID: 0}
-  _price: 1000
-  _efficiency: 20
+  _sprite: {fileID: 0}
+  _price: 50000
+  _efficiency: 1000

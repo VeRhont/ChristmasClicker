@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0e766e53c5dd6c8438172c91491d2bbf
+guid: 29ca12103e2235e45b93ce3ad74c7fc9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 450
+  spritePixelsToUnits: 500
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +69,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -128,64 +128,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Outside1_0
+      name: Decorations_0
       rect:
         serializedVersion: 2
-        x: 1352
-        y: 667
-        width: 875
-        height: 1366
-      alignment: 9
-      pivot: {x: 0.63530064, y: 0.19449635}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 13de4b308f66a254f8940638666aa5c9
-      internalID: -1953016176
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Outside1_1
-      rect:
-        serializedVersion: 2
-        x: 3349
-        y: 937
-        width: 1136
-        height: 1148
+        x: 2094
+        y: 3121
+        width: 2688
+        height: 732
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28bc4de5e7ddbdf4ab671953a11eb1a2
-      internalID: -2027443636
+      spriteID: 935e5afc837530a47a4c7a034f03db20
+      internalID: 1997250546
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Outside1_2
+      name: Decorations_1
       rect:
         serializedVersion: 2
-        x: 5340
-        y: 0
-        width: 1452
-        height: 2532
-      alignment: 9
-      pivot: {x: 0.5066409, y: 0.5108742}
+        x: 1095
+        y: 2456
+        width: 4655
+        height: 479
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e6bcc4510b77b343bf4577df78762c2
-      internalID: 2083943420
+      spriteID: 3a8d9d2c7d7839e4db69488a0d8f60e3
+      internalID: 1404122841
       vertices: []
       indices: 
       edges: []
@@ -201,9 +180,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Outside1_1: -2027443636
-      Outside1_0: -1953016176
-      Outside1_2: 2083943420
+      Decorations_1: 1404122841
+      Decorations_0: 1997250546
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

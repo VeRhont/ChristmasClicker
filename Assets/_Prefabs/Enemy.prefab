@@ -823,8 +823,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a4747145e9e0a41a9b6d2adc19cdd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2.5
-  _maxHealth: 100
+  _speed: 3
+  _maxHealth: 150
   _enemyDamage: 15
   _damageOnClick: 20
   _damageFromSnowball: 20

@@ -20,7 +20,7 @@ public class EnemyWaves : MonoBehaviour
 
     private void SpawnEnemyWave()
     {
-        for (int i = 0; i < _waveNumber; i++)
+        for (int i = 0; i < _waveNumber + 2; i++)
         {
             StartCoroutine(SpawnEnemy());
         }
@@ -41,8 +41,9 @@ public class EnemyWaves : MonoBehaviour
         yield return new WaitForSeconds(Random.Range(_minTimeBetweenSpawn, _maxTimeBetweenSpawn));
 
         var position = GetRandomPosition();
-
         var enemy = Instantiate(_enemyPrefab, position, Quaternion.identity);
+
+        MusicManager.Instance.IsBattle = true;
     }
 
     private void SpawnBoss()

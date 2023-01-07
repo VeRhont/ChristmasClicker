@@ -3,12 +3,19 @@ using UnityEngine.EventSystems;
 
 public class Enemy : MonoBehaviour, IPointerClickHandler
 {
+    [Header("EnemyStats")]
     [SerializeField] private float _speed;
     [SerializeField] private int _maxHealth;
     [SerializeField] private int _enemyDamage;
     [SerializeField] private int _damageOnClick;
     [SerializeField] private int _damageFromSnowball;
-    private int _health;
+    private int _health = 0;
+
+    [Header("EnemyAttack")]
+    [SerializeField] private float _timeBetweenAttack = 1f;
+    private float _timeFromLastAttack = 0;
+    private bool _isAttacking = false;
+    private GameObject _collisionObject;
 
     private Rigidbody2D _enemyRb;
     private Animator _enemyAnimator;
@@ -24,6 +31,13 @@ public class Enemy : MonoBehaviour, IPointerClickHandler
     private void Update()
     {
         _enemyRb.MovePosition(transform.position + Vector3.left * _speed * Time.deltaTime);
+
+        if (_isAttacking && (_timeFromLastAttack <= 0))
+        {
+            Attack();
+            _timeFromLastAttack = _timeBetweenAttack;
+        }
+        _timeFromLastAttack -= Time.deltaTime;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -46,6 +60,22 @@ public class Enemy : MonoBehaviour, IPointerClickHandler
         Destroy(gameObject);
     }
 
+    private void Attack()
+    {
+        var obj = _collisionObject;
+
+        _enemyAnimator.SetTrigger("Attack");
+
+        if (obj.CompareTag("Barricade"))
+        {
+            obj.GetComponent<Barricade>().TakeDamage(_enemyDamage);
+        }
+        else if (obj.CompareTag("Cannon"))
+        {
+            obj.GetComponent<Cannon>().TakeDamage(_enemyDamage);
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Snowball"))
@@ -53,15 +83,19 @@ public class Enemy : MonoBehaviour, IPointerClickHandler
             TakeDamage(_damageFromSnowball);
             Destroy(collision.gameObject);
         }
-        if (collision.gameObject.CompareTag("Barricade"))
+        if (collision.gameObject.CompareTag("Cannon") || collision.gameObject.CompareTag("Barricade"))
         {
-            _enemyAnimator.SetTrigger("Attack");
-            collision.gameObject.GetComponent<Barricade>().TakeDamage(_enemyDamage);
+            _isAttacking = true;
+            _collisionObject = collision.gameObject;
         }
-        if (collision.gameObject.CompareTag("Cannon"))
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Cannon") || collision.gameObject.CompareTag("Barricade"))
         {
-            _enemyAnimator.SetTrigger("Attack");
-            collision.gameObject.GetComponent<Cannon>().TakeDamage(_enemyDamage);
+            _isAttacking = false;
+            _collisionObject = null;
         }
     }
 }

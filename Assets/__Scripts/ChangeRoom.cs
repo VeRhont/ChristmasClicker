@@ -9,7 +9,6 @@ public class ChangeRoom : MonoBehaviour, IPointerClickHandler
     [SerializeField] private GameObject _roomCanvas;
     [SerializeField] private GameObject _outsideCanvas;
 
-    [SerializeField] private Animator _animator;
     [SerializeField] private float _transitionTime;
 
     private Camera _camera;
@@ -27,8 +26,6 @@ public class ChangeRoom : MonoBehaviour, IPointerClickHandler
 
     private IEnumerator ChangePosition()
     {
-        // _animator.SetTrigger("Transition");
-
         yield return new WaitForSeconds(_transitionTime);
 
         if (_isOutside)

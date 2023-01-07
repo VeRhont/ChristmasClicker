@@ -766,7 +766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 2
-  _maxHealth: 1000
+  _maxHealth: 1250
   _enemyDamage: 100
   _damageOnClick: 20
   _damageFromSnowball: 40

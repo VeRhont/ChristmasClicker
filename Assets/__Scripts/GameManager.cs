@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI _roomScoreText;
     [SerializeField] private TextMeshProUGUI _outsideScoreText;
+    [SerializeField] private TextMeshProUGUI _winText;
+    [SerializeField] private TextMeshProUGUI _loseText;
 
     private float _timer = 1f;
 
@@ -25,6 +27,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (_score > 1000)
+        {
+            WinGame();
+        }
+
         _timer -= Time.deltaTime;
 
         if (_timer <= 0)
@@ -56,5 +63,15 @@ public class GameManager : MonoBehaviour
     public void IncreaseCoinsPerSecond(int value)
     {
         _coinsPerSecond += value;
+    }
+
+    private void WinGame()
+    {
+        Time.timeScale = 0f;
+    }
+
+    private void LoseGame()
+    {
+        Time.timeScale = 0f;
     }
 }
