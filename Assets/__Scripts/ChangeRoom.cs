@@ -4,15 +4,17 @@ using UnityEngine.EventSystems;
 
 public class ChangeRoom : MonoBehaviour, IPointerClickHandler
 {
+    public static bool IsOutside = false;
+
     [SerializeField] private Vector3 _cameraRoomPosition;
     [SerializeField] private Vector3 _cameraOutsidePosition;
     [SerializeField] private GameObject _roomCanvas;
     [SerializeField] private GameObject _outsideCanvas;
 
     [SerializeField] private float _transitionTime;
+    [SerializeField] private Animator _transitionAnimator;
 
     private Camera _camera;
-    private bool _isOutside = false;
 
     private void Awake()
     {
@@ -21,14 +23,16 @@ public class ChangeRoom : MonoBehaviour, IPointerClickHandler
 
     public void ChangeCameraPosition()
     {
-        StartCoroutine(ChangePosition());
+        StartCoroutine(ChangeCameraPos());
     }
 
-    private IEnumerator ChangePosition()
+    private IEnumerator ChangeCameraPos()
     {
+        _transitionAnimator.SetTrigger("Transition");
+
         yield return new WaitForSeconds(_transitionTime);
 
-        if (_isOutside)
+        if (IsOutside)
         {
             _camera.transform.position = _cameraRoomPosition;
         }
@@ -37,14 +41,14 @@ public class ChangeRoom : MonoBehaviour, IPointerClickHandler
             _camera.transform.position = _cameraOutsidePosition;
         }
 
-        _roomCanvas.SetActive(_isOutside);
-        _outsideCanvas.SetActive(!_isOutside);
-        _isOutside = !_isOutside;
+        _roomCanvas.SetActive(IsOutside);
+        _outsideCanvas.SetActive(!IsOutside);
+        IsOutside = !IsOutside;
+
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Ok");
         ChangeCameraPosition();
     }
 }

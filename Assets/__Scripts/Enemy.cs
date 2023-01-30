@@ -20,6 +20,9 @@ public class Enemy : MonoBehaviour, IPointerClickHandler
     private Rigidbody2D _enemyRb;
     private Animator _enemyAnimator;
 
+    [SerializeField] private float _deathAnimationTime = 0.5f;
+    [SerializeField] private ParticleSystem _deathParticles;
+
     private void Awake()
     {
         _enemyRb = GetComponent<Rigidbody2D>();
@@ -47,6 +50,8 @@ public class Enemy : MonoBehaviour, IPointerClickHandler
 
     private void TakeDamage(int damage)
     {
+        _enemyAnimator.SetTrigger("TakeDamage");
+
         _health = Mathf.Clamp(_health - damage, 0, _maxHealth);
 
         if (_health == 0)
@@ -57,7 +62,13 @@ public class Enemy : MonoBehaviour, IPointerClickHandler
 
     private void Die()
     {
-        Destroy(gameObject);
+        _enemyAnimator.SetBool("IsAlive", false);
+        enabled = false;
+
+        _deathParticles.transform.position = transform.position;
+        _deathParticles.Play();
+
+        Destroy(gameObject, _deathAnimationTime);
     }
 
     private void Attack()

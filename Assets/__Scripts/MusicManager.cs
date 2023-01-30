@@ -29,13 +29,13 @@ public class MusicManager : MonoBehaviour
     {
         if (IsBattle)
         {
-            _normalAudioSource.enabled = false;
-            _battleAudioSource.enabled = true;
+            _normalAudioSource.volume = 0f;
+            _battleAudioSource.volume = 1f;
         }
         else
         {
-            _normalAudioSource.enabled = true;
-            _battleAudioSource.enabled = false;
+            _normalAudioSource.volume = 1f;
+            _battleAudioSource.volume = 0f;
         }
     }
 

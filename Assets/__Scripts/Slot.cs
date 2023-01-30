@@ -13,6 +13,7 @@ public class Slot : MonoBehaviour
     [SerializeField] private GameObject _roomChanges;
 
     private Sprite _sprite;
+    private Sprite _defaultSprite;
     private int _initialPrice;
     private int _price;
 
@@ -24,6 +25,7 @@ public class Slot : MonoBehaviour
     private void Awake()
     {
         _sprite = _item.Sprite;
+        _defaultSprite = _item.DefaultSprite;
         _initialPrice = _item.price;
         _coinsPerSecond = _item.efficiency;
 
@@ -62,8 +64,31 @@ public class Slot : MonoBehaviour
 
     private void SetValues()
     {
-        _slotImage.sprite = _sprite;
-        _slotPrice.SetText(_price.ToString());
-        _slotEfficiency.SetText(_coinsPerSecond.ToString());
+        if (_count == 0)
+        {
+            _slotImage.sprite = _defaultSprite;
+        }
+        else
+        {
+            _slotImage.sprite = _sprite;
+        }
+
+        if (_price >= 1000f)
+        {
+            _slotPrice.SetText((_price / 1000f).ToString() + "K");
+        }
+        else
+        {
+            _slotPrice.SetText(_price.ToString());
+        }
+
+        if (_coinsPerSecond >= 1000f)
+        {
+            _slotEfficiency.SetText((_coinsPerSecond / 1000f).ToString() + "K");
+        }
+        else
+        {
+            _slotEfficiency.SetText(_coinsPerSecond.ToString());
+        }
     }
 }

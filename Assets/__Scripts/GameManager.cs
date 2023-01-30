@@ -12,11 +12,13 @@ public class GameManager : MonoBehaviour
     private int _coinsForClick = 1;
     private int _coinsPerSecond = 0;
 
+    [SerializeField] private float _scoreToWin = 1000000f;
+
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI _roomScoreText;
     [SerializeField] private TextMeshProUGUI _outsideScoreText;
-    [SerializeField] private TextMeshProUGUI _winText;
-    [SerializeField] private TextMeshProUGUI _loseText;
+    [SerializeField] private GameObject _winUI;
+    [SerializeField] private GameObject _loseUI;
 
     private float _timer = 1f;
 
@@ -27,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (_score > 1000)
+        if (_score >= _scoreToWin)
         {
             WinGame();
         }
@@ -68,10 +70,22 @@ public class GameManager : MonoBehaviour
     private void WinGame()
     {
         Time.timeScale = 0f;
+
+        _winUI.SetActive(true);
     }
 
     private void LoseGame()
     {
         Time.timeScale = 0f;
+
+        _loseUI.SetActive(true);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            LoseGame();
+        }
     }
 }
