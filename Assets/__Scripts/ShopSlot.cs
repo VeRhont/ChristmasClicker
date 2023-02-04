@@ -26,6 +26,8 @@ public class ShopSlot : MonoBehaviour
         if (GameManager.Instance.Score < _price) return;
 
         _isBuying = true;
+        ShowCanvas.Instance.HideShop();
+
         _flyingObject.GetComponent<SpriteRenderer>().sprite = _objectSprite;
         _flyingObject.SetActive(true);
     }
@@ -82,7 +84,7 @@ public class ShopSlot : MonoBehaviour
     {
         GameManager.Instance.DecreaseScore(_price);
 
-        _price = (int)(_price * 1.3f);
+        _price = (int)(_price * 1.5f);
         _priceText.SetText(_price.ToString());
     }
 

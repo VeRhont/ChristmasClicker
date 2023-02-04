@@ -58,6 +58,7 @@ MonoBehaviour:
   _slotPrice: {fileID: 799709817260278883}
   _slotEfficiency: {fileID: 799709816371786223}
   _roomChanges: {fileID: 0}
+  _buySound: {fileID: 8300000, guid: e35f0cb1f4af09f42adbb721923a75f4, type: 3}
 --- !u!1 &799709815410082277
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,8 +260,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5e42b88a318e1f84aac275754dd9f6c3, type: 2}
+  m_sharedMaterial: {fileID: -8976791503161704683, guid: 5e42b88a318e1f84aac275754dd9f6c3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -470,8 +471,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5e42b88a318e1f84aac275754dd9f6c3, type: 2}
+  m_sharedMaterial: {fileID: -8976791503161704683, guid: 5e42b88a318e1f84aac275754dd9f6c3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 
 public class ChangeRoom : MonoBehaviour, IPointerClickHandler
 {
+    public static ChangeRoom Instance;
     public static bool IsOutside = false;
 
     [SerializeField] private Vector3 _cameraRoomPosition;
@@ -18,6 +19,8 @@ public class ChangeRoom : MonoBehaviour, IPointerClickHandler
 
     private void Awake()
     {
+        Instance = this;
+
         _camera = Camera.main;
     }
 

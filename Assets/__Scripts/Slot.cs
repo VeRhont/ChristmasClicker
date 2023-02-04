@@ -12,6 +12,8 @@ public class Slot : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _slotEfficiency;
     [SerializeField] private GameObject _roomChanges;
 
+    [SerializeField] private AudioClip _buySound;
+
     private Sprite _sprite;
     private Sprite _defaultSprite;
     private int _initialPrice;
@@ -41,6 +43,8 @@ public class Slot : MonoBehaviour
             GameManager.Instance.DecreaseScore(_price);
             GameManager.Instance.UpdateScore();
             GameManager.Instance.IncreaseCoinsPerSecond(_coinsPerSecond);
+
+            MusicManager.Instance.PlaySound(_buySound);
 
             _count += 1;
             _price = (int)(_price * 1.5f);
@@ -75,7 +79,10 @@ public class Slot : MonoBehaviour
 
         if (_price >= 1000f)
         {
-            _slotPrice.SetText((_price / 1000f).ToString() + "K");
+            if (_price % 10 != 0) _price = _price / 10 * 10;
+            var priceText = (_price / 1000f).ToString();
+
+            _slotPrice.SetText(priceText + "K");
         }
         else
         {
@@ -84,7 +91,8 @@ public class Slot : MonoBehaviour
 
         if (_coinsPerSecond >= 1000f)
         {
-            _slotEfficiency.SetText((_coinsPerSecond / 1000f).ToString() + "K");
+            var efficiencyText = (_coinsPerSecond / 1000f).ToString();
+            _slotEfficiency.SetText(efficiencyText + "K");
         }
         else
         {

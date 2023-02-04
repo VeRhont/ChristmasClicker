@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Cannon : MonoBehaviour
 {
     [SerializeField] private int _health;
     [SerializeField] private float _lifeTime;
+    [SerializeField] private Image _timerImage;
+    [SerializeField] private Image _timerBackgroundImage;
+    [SerializeField] private Vector3 _offset;
 
     [SerializeField] private float _shootingRate;
     [SerializeField] private float _projectileSpeed;
@@ -12,9 +16,21 @@ public class Cannon : MonoBehaviour
 
     private bool _shooting = false;
     private float _lastShootingTime = 0;
+    private float _maxLifeTime;
+
+    private void Start()
+    {
+        _maxLifeTime = _lifeTime;
+        _timerImage.transform.position = Camera.main.WorldToScreenPoint(transform.position + _offset);
+        _timerBackgroundImage.transform.position = Camera.main.WorldToScreenPoint(transform.position + _offset);
+    }
 
     private void Update()
     {
+        UpdateUI();
+
+        _timerImage.fillAmount = _lifeTime / _maxLifeTime;
+
         if (_lifeTime <= 0)
         {
             Destroy(gameObject);
@@ -65,5 +81,13 @@ public class Cannon : MonoBehaviour
         {
             _shooting = false;
         }
+    }
+
+    private void UpdateUI()
+    {
+        var isOutside = ChangeRoom.IsOutside;
+ 
+        _timerImage.enabled = isOutside;
+        _timerBackgroundImage.enabled = isOutside;
     }
 }

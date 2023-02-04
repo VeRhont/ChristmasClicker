@@ -3,18 +3,24 @@ using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
+    [SerializeField] private AudioClip _clickSound;
+
     public void PauseGame()
     {
+        MusicManager.Instance.PlaySound(_clickSound);
         Time.timeScale = 0f;
     }
 
     public void ResumeGame()
     {
+        MusicManager.Instance.PlaySound(_clickSound);
         Time.timeScale = 1f;
     }
 
     public void Restart()
     {
+        MusicManager.Instance.PlaySound(_clickSound);
+
         Time.timeScale = 1f;
 
         SceneManager.LoadScene("MainRoom");
@@ -22,6 +28,8 @@ public class UI : MonoBehaviour
     
     public void ReturnToMenu()
     {
+        MusicManager.Instance.PlaySound(_clickSound);
+
         Time.timeScale = 1f;
 
         SceneManager.LoadScene("Menu");

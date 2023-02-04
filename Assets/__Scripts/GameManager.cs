@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public int CoinsPerSecond { get { return _coinsPerSecond; } }
 
     private int _score = 0;
-    private int _coinsForClick = 1;
+    private int _coinsForClick = 100;
     private int _coinsPerSecond = 0;
 
     [SerializeField] private float _scoreToWin = 1000000f;
