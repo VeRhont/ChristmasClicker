@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
 public class MusicManager : MonoBehaviour
@@ -9,6 +10,8 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private AudioSource _normalAudioSource;
     [SerializeField] private AudioSource _battleAudioSource;
     [SerializeField] private AudioSource _audioSource;
+
+    private bool _isSoundOn = false;
 
     private void Awake()
     {
@@ -42,5 +45,5 @@ public class MusicManager : MonoBehaviour
     public void PlaySound(AudioClip _sound)
     {
         _audioSource.PlayOneShot(_sound);
-    }
+    }  
 }

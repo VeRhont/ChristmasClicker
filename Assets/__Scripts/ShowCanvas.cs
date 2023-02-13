@@ -15,14 +15,20 @@ public class ShowCanvas : MonoBehaviour
     [SerializeField] private Vector2 _normalPosition;
     [SerializeField] private Vector2 _hiddenPosition;
 
+    [SerializeField] private Sprite _arrowUp;
+    [SerializeField] private Sprite _arrowDown;
+    [SerializeField] private Image _togglerImage;
+
     public void ShowShop()
     {
         if (_showShop.isOn)
         {
+            _togglerImage.sprite = _arrowDown;
             _rectTransform.transform.localPosition = _normalPosition;
         }
         else
         {
+            _togglerImage.sprite = _arrowUp;
             _rectTransform.transform.localPosition = _hiddenPosition;
         }
     }
