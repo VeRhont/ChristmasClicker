@@ -32,6 +32,7 @@ public class UI : MonoBehaviour
 
         Time.timeScale = 1f;
 
+        GameManager.Instance.SaveValues();
         SceneManager.LoadScene("Menu");
     }
 }

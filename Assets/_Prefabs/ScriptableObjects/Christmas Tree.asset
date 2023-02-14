@@ -16,3 +16,4 @@ MonoBehaviour:
   _defaultSprite: {fileID: -569778061, guid: 78db102a081e7464ebb9962663caf876, type: 3}
   _price: 50000
   _efficiency: 1000
+  _name: christmasTree

@@ -15,6 +15,13 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Slider _volumeSlider;
     [SerializeField] private Toggle _volumeToggle;
     [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioSource _musicSource;
+
+    private void Start()
+    {
+        LoadVolumeValue();
+        SetNewVolume();
+    }
 
     public void Play()
     {
@@ -76,6 +83,33 @@ public class MainMenu : MonoBehaviour
     public void ChangeVolume()
     {
         _currentVolume = _volumeSlider.value;
+
+        SetNewVolume();
+        SaveVolumeValue();
+    }
+
+    public void ToggleVolume()
+    {
+        if (_volumeToggle.isOn)
+        {
+            _currentVolume = 0.5f;
+        }
+        else
+        {
+            _currentVolume = 0f;
+        }
+
+        SetNewVolume();
+        SaveVolumeValue();
+    }
+
+    private void SetNewVolume()
+    {
+        _audioSource.volume = _currentVolume;
+        _musicSource.volume = _currentVolume;
+
+        _volumeSlider.value = _currentVolume;
+        _volumeToggle.isOn = (_currentVolume != 0);
     }
 
     public void LoadVolumeValue()

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public int CoinsPerSecond { get { return _coinsPerSecond; } }
 
     private int _score = 0;
-    private int _coinsForClick = 100;
+    private int _coinsForClick = 1;
     private int _coinsPerSecond = 0;
 
     [SerializeField] private float _scoreToWin = 1000000f;
@@ -25,6 +25,11 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+        _score = PlayerPrefs.GetInt("score", 0);
+        _coinsPerSecond = PlayerPrefs.GetInt("coinsPerSecond", 0);
+
+        UpdateScore();
     }
 
     private void Update()
@@ -78,6 +83,8 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0f;
 
+        PlayerPrefs.DeleteAll();
+
         _loseUI.SetActive(true);
     }
 
@@ -87,5 +94,16 @@ public class GameManager : MonoBehaviour
         {
             LoseGame();
         }
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveValues();
+    }
+
+    public void SaveValues()
+    {
+        PlayerPrefs.SetInt("score", _score);
+        PlayerPrefs.SetInt("coinsPerSecond", _coinsPerSecond);
     }
 }

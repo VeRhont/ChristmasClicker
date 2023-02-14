@@ -12,6 +12,7 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private AudioSource _audioSource;
 
     private bool _isSoundOn = false;
+    private float _currentVolume;
 
     private void Awake()
     {
@@ -19,6 +20,10 @@ public class MusicManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        _currentVolume = PlayerPrefs.GetFloat("volume", 0.5f);
+
+        _audioSource.volume = _currentVolume;
     }
 
     private void Update()
@@ -33,11 +38,11 @@ public class MusicManager : MonoBehaviour
         if (IsBattle)
         {
             _normalAudioSource.volume = 0f;
-            _battleAudioSource.volume = 1f;
+            _battleAudioSource.volume = _currentVolume;
         }
         else
         {
-            _normalAudioSource.volume = 1f;
+            _normalAudioSource.volume = _currentVolume;
             _battleAudioSource.volume = 0f;
         }
     }
@@ -45,5 +50,5 @@ public class MusicManager : MonoBehaviour
     public void PlaySound(AudioClip _sound)
     {
         _audioSource.PlayOneShot(_sound);
-    }  
+    } 
 }

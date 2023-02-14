@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System;
 
 public class Slot : MonoBehaviour
 {
@@ -18,6 +17,7 @@ public class Slot : MonoBehaviour
     private Sprite _defaultSprite;
     private int _initialPrice;
     private int _price;
+    private string _name;
 
     private int _coinsPerSecond;
     private int _count = 0;
@@ -28,12 +28,15 @@ public class Slot : MonoBehaviour
     {
         _sprite = _item.Sprite;
         _defaultSprite = _item.DefaultSprite;
-        _initialPrice = _item.price;
-        _coinsPerSecond = _item.efficiency;
+        _initialPrice = _item.Price;
+        _coinsPerSecond = _item.Efficiency;
+        _name = _item.Name;
 
-        _price = _initialPrice;
+        _price = PlayerPrefs.GetInt($"{_name}Price", _initialPrice);
+        _count = PlayerPrefs.GetInt($"{_name}Count", 0);
 
         SetValues();
+        UpdateRoom();
     }
 
     public void BuyItem()
@@ -51,6 +54,7 @@ public class Slot : MonoBehaviour
 
             SetValues();
             UpdateRoom();
+            SaveValues();
         }
     }
 
@@ -98,5 +102,11 @@ public class Slot : MonoBehaviour
         {
             _slotEfficiency.SetText(_coinsPerSecond.ToString());
         }
+    }
+
+    private void SaveValues()
+    {
+        PlayerPrefs.SetInt($"{_name}Price", _price);
+        PlayerPrefs.SetInt($"{_name}Count", _count);
     }
 }
