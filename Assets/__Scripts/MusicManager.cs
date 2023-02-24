@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class MusicManager : MonoBehaviour
 {
     public static MusicManager Instance;
-    public bool IsBattle = false;
+    private bool _isBattle = false;
 
     [SerializeField] private AudioSource _normalAudioSource;
     [SerializeField] private AudioSource _battleAudioSource;
@@ -30,12 +30,12 @@ public class MusicManager : MonoBehaviour
     {
         ChangeMusic();
 
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0) IsBattle = false;
+        _isBattle = EnemyWaves.Instance.IsBattle;
     }
 
     public void ChangeMusic()
     {
-        if (IsBattle)
+        if (_isBattle)
         {
             _normalAudioSource.volume = 0f;
             _battleAudioSource.volume = _currentVolume;

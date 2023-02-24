@@ -19,6 +19,9 @@ public class ShopSlot : MonoBehaviour
     {
         _price = _initialPrice;
         _priceText.SetText(_price.ToString());
+
+        LoadValues();
+
     }
 
     public void BuyObject()
@@ -86,6 +89,8 @@ public class ShopSlot : MonoBehaviour
 
         _price = (int)(_price * 1.5f);
         _priceText.SetText(_price.ToString());
+
+        SaveValues();
     }
 
     private void HideFlyingObject()
@@ -93,5 +98,16 @@ public class ShopSlot : MonoBehaviour
         _flyingObject.GetComponent<SpriteRenderer>().sprite = null;
         _flyingObject.SetActive(false);
         _isBuying = false;
+    }
+
+    private void SaveValues()
+    {
+        PlayerPrefs.SetInt($"{name}Price", _price);
+    }
+
+    private void LoadValues()
+    {
+        _price = PlayerPrefs.GetInt($"{name}Price", _initialPrice);
+        _priceText.SetText(_price.ToString());
     }
 }

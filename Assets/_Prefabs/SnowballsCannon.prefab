@@ -199,7 +199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1716882451, guid: 78db102a081e7464ebb9962663caf876, type: 3}
+  m_Sprite: {fileID: -1682268447, guid: 2846293259c246240beab18c1667921c, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -245,7 +245,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -48, y: -11.1}
-  m_SizeDelta: {x: 38.77, y: 38.77}
+  m_SizeDelta: {x: 24.9401, y: 24.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1850645030
 CanvasRenderer:
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1682268447, guid: 2846293259c246240beab18c1667921c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -428,8 +428,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2825006690916213126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.3149, y: 0.18, z: -0.00037926948}
-  m_LocalScale: {x: 8.84135, y: 0.09609544, z: 1}
+  m_LocalPosition: {x: 5.4622, y: 0.18, z: -0.00037926948}
+  m_LocalScale: {x: 9.135767, y: 0.51981866, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2825006690316989417}
@@ -477,7 +477,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.15686275}
+  m_Color: {r: 1, g: 0, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -631,11 +631,15 @@ MonoBehaviour:
   _lifeTime: 100
   _timerImage: {fileID: 1105870053}
   _timerBackgroundImage: {fileID: 1850645029}
-  _offset: {x: -0.5, y: 1, z: 0}
+  _offset: {x: -0.5, y: 0.6, z: 0}
   _shootingRate: 1
-  _projectileSpeed: 3
+  _projectileSpeed: 2.5
   _projectile: {fileID: 2106344131907995383, guid: cdf0abae1a0075341ac9d2307738fe13, type: 3}
   _shootingPoint: {fileID: 424492924}
+  _damagedColor: {r: 0.990566, g: 0.83637416, b: 0.83637416, a: 1}
+  _defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  _spriteRenderer: {fileID: 2825006690545728286}
+  _shooting: 0
 --- !u!210 &1670243833
 SortingGroup:
   m_ObjectHideFlags: 0

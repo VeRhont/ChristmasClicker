@@ -20,8 +20,9 @@ public class ChangeRoom : MonoBehaviour, IPointerClickHandler
     private void Awake()
     {
         Instance = this;
-
         _camera = Camera.main;
+
+        IsOutside = false;
     }
 
     public void ChangeCameraPosition()

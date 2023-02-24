@@ -915,7 +915,11 @@ MonoBehaviour:
   _damageOnClick: 20
   _damageFromSnowball: 20
   _timeBetweenAttack: 1
+  _deathAnimationTime: 0.5
   _deathParticles: {fileID: 1169502245725217386}
+  _attackSound: {fileID: 8300000, guid: f271ee3da259b1a40bc5bd13b4d9c638, type: 3}
+  _takingDamageSound: {fileID: 8300000, guid: 0b0a8f94a94ab604dbb9d699fcc93f35, type: 3}
+  _deathSound: {fileID: 8300000, guid: 4e2564ea72335814e8575789b58ac7e4, type: 3}
 --- !u!210 &738069128
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -1060,7 +1064,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 1
-      minScalar: 0.3
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1112,8 +1116,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 4
-      minScalar: 1
+      scalar: 8
+      minScalar: 4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1228,8 +1232,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.2
-      minScalar: 0.04
+      scalar: 0.3
+      minScalar: 0.08
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2364,13 +2368,13 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
-    mode: 0
+    enabled: 1
+    mode: 1
     timeMode: 0
     fps: 30
     frameOverTime:
       serializedVersion: 2
-      minMaxState: 1
+      minMaxState: 0
       scalar: 0.9999
       minScalar: 0.9999
       maxCurve:
@@ -2380,16 +2384,16 @@ ParticleSystem:
           time: 0
           value: 0
           inSlope: 0
-          outSlope: 1
+          outSlope: 0
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 1
+          value: 0.036144257
           inSlope: 1
-          outSlope: 0
+          outSlope: 1
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
@@ -2423,8 +2427,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startFrame:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
+      minMaxState: 3
+      scalar: 0.8333333
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2483,7 +2487,12 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: -1134690204, guid: c3e2fc83cac2f6048a3082ef25f19653, type: 3}
+    - sprite: {fileID: -664597125, guid: c3e2fc83cac2f6048a3082ef25f19653, type: 3}
+    - sprite: {fileID: -467874585, guid: c3e2fc83cac2f6048a3082ef25f19653, type: 3}
+    - sprite: {fileID: 2011390019, guid: c3e2fc83cac2f6048a3082ef25f19653, type: 3}
+    - sprite: {fileID: -323248399, guid: c3e2fc83cac2f6048a3082ef25f19653, type: 3}
+    - sprite: {fileID: 1605496757, guid: c3e2fc83cac2f6048a3082ef25f19653, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:

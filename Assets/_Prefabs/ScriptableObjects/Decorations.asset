@@ -15,5 +15,5 @@ MonoBehaviour:
   _sprite: {fileID: -1538326524, guid: 78db102a081e7464ebb9962663caf876, type: 3}
   _defaultSprite: {fileID: -569778061, guid: 78db102a081e7464ebb9962663caf876, type: 3}
   _price: 10000
-  _efficiency: 100
+  _efficiency: 200
   _name: decorations

@@ -852,14 +852,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a4747145e9e0a41a9b6d2adc19cdd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
+  _speed: 1.75
   _maxHealth: 1250
   _enemyDamage: 100
   _damageOnClick: 20
   _damageFromSnowball: 40
   _timeBetweenAttack: 1
-  _deathAnimationTime: 1
+  _deathAnimationTime: 0.8
   _deathParticles: {fileID: 6098434086997792615}
+  _attackSound: {fileID: 8300000, guid: f271ee3da259b1a40bc5bd13b4d9c638, type: 3}
+  _takingDamageSound: {fileID: 8300000, guid: 0b0a8f94a94ab604dbb9d699fcc93f35, type: 3}
+  _deathSound: {fileID: 8300000, guid: 4e2564ea72335814e8575789b58ac7e4, type: 3}
 --- !u!210 &7471660845996173348
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -1072,8 +1075,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 5
-      minScalar: 1
+      scalar: 7
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1188,7 +1191,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.8
+      scalar: 0.4
       minScalar: 0.1
       maxCurve:
         serializedVersion: 2
@@ -2324,13 +2327,13 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
-    mode: 0
+    enabled: 1
+    mode: 1
     timeMode: 0
     fps: 30
     frameOverTime:
       serializedVersion: 2
-      minMaxState: 1
+      minMaxState: 0
       scalar: 0.9999
       minScalar: 0.9999
       maxCurve:
@@ -2383,8 +2386,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startFrame:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
+      minMaxState: 3
+      scalar: 0.8333333
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2443,7 +2446,12 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: -1134690204, guid: c3e2fc83cac2f6048a3082ef25f19653, type: 3}
+    - sprite: {fileID: -664597125, guid: c3e2fc83cac2f6048a3082ef25f19653, type: 3}
+    - sprite: {fileID: -467874585, guid: c3e2fc83cac2f6048a3082ef25f19653, type: 3}
+    - sprite: {fileID: 2011390019, guid: c3e2fc83cac2f6048a3082ef25f19653, type: 3}
+    - sprite: {fileID: -323248399, guid: c3e2fc83cac2f6048a3082ef25f19653, type: 3}
+    - sprite: {fileID: 1605496757, guid: c3e2fc83cac2f6048a3082ef25f19653, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:

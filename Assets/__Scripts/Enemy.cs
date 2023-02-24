@@ -23,6 +23,11 @@ public class Enemy : MonoBehaviour, IPointerClickHandler
     [SerializeField] private float _deathAnimationTime = 0.5f;
     [SerializeField] private ParticleSystem _deathParticles;
 
+    [Header("Sound")]
+    [SerializeField] private AudioClip _attackSound;
+    [SerializeField] private AudioClip _takingDamageSound;
+    [SerializeField] private AudioClip _deathSound;
+
     private void Awake()
     {
         _enemyRb = GetComponent<Rigidbody2D>();
@@ -50,6 +55,7 @@ public class Enemy : MonoBehaviour, IPointerClickHandler
 
     private void TakeDamage(int damage)
     {
+        MusicManager.Instance.PlaySound(_takingDamageSound);
         _enemyAnimator.SetTrigger("TakeDamage");
 
         _health = Mathf.Clamp(_health - damage, 0, _maxHealth);
@@ -62,6 +68,7 @@ public class Enemy : MonoBehaviour, IPointerClickHandler
 
     private void Die()
     {
+        MusicManager.Instance.PlaySound(_deathSound);
         _enemyAnimator.SetBool("IsAlive", false);
         enabled = false;
 
@@ -73,6 +80,8 @@ public class Enemy : MonoBehaviour, IPointerClickHandler
 
     private void Attack()
     {
+        MusicManager.Instance.PlaySound(_attackSound);
+
         var obj = _collisionObject;
 
         _enemyAnimator.SetTrigger("Attack");

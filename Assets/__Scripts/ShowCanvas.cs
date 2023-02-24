@@ -19,8 +19,12 @@ public class ShowCanvas : MonoBehaviour
     [SerializeField] private Sprite _arrowDown;
     [SerializeField] private Image _togglerImage;
 
+    [SerializeField] private AudioClip _showUpSound;
+
     public void ShowShop()
     {
+        MusicManager.Instance.PlaySound(_showUpSound);
+
         if (_showShop.isOn)
         {
             _togglerImage.sprite = _arrowDown;

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Cannon : MonoBehaviour
 {
@@ -14,7 +15,11 @@ public class Cannon : MonoBehaviour
     [SerializeField] private GameObject _projectile;
     [SerializeField] private Transform _shootingPoint;
 
-    private bool _shooting = false;
+    [SerializeField] private Color _damagedColor;
+    [SerializeField] private Color _defaultColor;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+
+    [SerializeField] private bool _shooting = false;
     private float _lastShootingTime = 0;
     private float _maxLifeTime;
 
@@ -42,6 +47,11 @@ public class Cannon : MonoBehaviour
             _lastShootingTime = _shootingRate;
         }
 
+        if (EnemyWaves.Instance.IsBattle == false)
+        {
+            _shooting = false;
+        }
+
         _lastShootingTime -= Time.deltaTime;
         _lifeTime -= Time.deltaTime;
     }
@@ -50,10 +60,13 @@ public class Cannon : MonoBehaviour
     {
         var snowball = Instantiate(_projectile, _shootingPoint.position, Quaternion.identity);
         snowball.GetComponent<Rigidbody2D>().AddForce(Vector2.right * _projectileSpeed, ForceMode2D.Impulse);
+
+        Destroy(snowball, 1f);
     }
 
     public void TakeDamage(int damage)
     {
+        StartCoroutine(ChangeColor());
         _health -= damage;
 
         if (_health <= 0)
@@ -67,29 +80,22 @@ public class Cannon : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private IEnumerator ChangeColor()
+    {
+        _spriteRenderer.color = _damagedColor;
+
+        yield return new WaitForSeconds(0.5f);
+
+        _spriteRenderer.color = _defaultColor;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
             _shooting = true;
-        }    
+        }
     }
-
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.CompareTag("Enemy"))
-    //    {
-    //        _shooting = true;
-    //    }
-    //}
-
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Enemy"))
-    //    {
-    //        _shooting = false;
-    //    }
-    //}
 
     private void UpdateUI()
     {

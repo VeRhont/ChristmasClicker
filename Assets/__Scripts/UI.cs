@@ -21,6 +21,9 @@ public class UI : MonoBehaviour
     {
         MusicManager.Instance.PlaySound(_clickSound);
 
+        PlayerPrefs.DeleteAll();
+        GameManager.Instance.ResetValues();
+
         Time.timeScale = 1f;
 
         SceneManager.LoadScene("MainRoom");
@@ -33,6 +36,8 @@ public class UI : MonoBehaviour
         Time.timeScale = 1f;
 
         GameManager.Instance.SaveValues();
+        EnemyWaves.Instance.SaveValues();
+
         SceneManager.LoadScene("Menu");
     }
 }

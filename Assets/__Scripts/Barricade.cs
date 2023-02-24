@@ -1,13 +1,12 @@
 using UnityEngine;
-using UnityEngine.UI;
+using System.Collections;
 
 public class Barricade : MonoBehaviour
 {
     [SerializeField] private float _health;
-    [SerializeField] private Slider _healthBar;
-    [SerializeField] private Image _healthBarFill;   
-
-    [SerializeField] private Vector3 _offset;
+    [SerializeField] private Color _damagedColor;
+    [SerializeField] private Color _defaultColor;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
 
     private float _maxHealth;
 
@@ -15,31 +14,19 @@ public class Barricade : MonoBehaviour
     {
         _maxHealth = _health;
 
-        _healthBar.transform.position = Camera.main.WorldToScreenPoint(transform.position + _offset);
-
-        UpdateHealthBar();
-    }
-
-    private void Update()
-    {
-        UpdateUI();
-    }
-
-    private void UpdateHealthBar()
-    {
-        _healthBar.value = _health / _maxHealth;
+        _spriteRenderer.color = _defaultColor;
     }
 
     public void TakeDamage(int damage)
     {
+        StartCoroutine(ChangeColor());
+
         _health -= damage;
 
         if (_health <= 0)
         {
             Die();
         }
-
-        UpdateHealthBar();
     }
 
     private void Die()
@@ -47,10 +34,12 @@ public class Barricade : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void UpdateUI()
+    private IEnumerator ChangeColor()
     {
-        var isOutside = ChangeRoom.IsOutside;
+        _spriteRenderer.color = _damagedColor;
 
-        _healthBar.gameObject.SetActive(isOutside);
+        yield return new WaitForSeconds(0.5f);
+
+        _spriteRenderer.color = _defaultColor;
     }
 }

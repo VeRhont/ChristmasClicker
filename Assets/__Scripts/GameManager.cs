@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     private int _coinsForClick = 1;
     private int _coinsPerSecond = 0;
 
-    [SerializeField] private float _scoreToWin = 1000000f;
+    [SerializeField] private float _scoreToWin = 500000f;
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI _roomScoreText;
@@ -20,15 +20,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _winUI;
     [SerializeField] private GameObject _loseUI;
 
+    [SerializeField] private AudioClip _clickSound;
+
     private float _timer = 1f;
 
     private void Awake()
     {
         Instance = this;
 
-        _score = PlayerPrefs.GetInt("score", 0);
-        _coinsPerSecond = PlayerPrefs.GetInt("coinsPerSecond", 0);
-
+        LoadValues();
         UpdateScore();
     }
 
@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
 
     public void Click()
     {
+        MusicManager.Instance.PlaySound(_clickSound);
+        
         _score += _coinsForClick;
         UpdateScore();
     }
@@ -74,6 +76,8 @@ public class GameManager : MonoBehaviour
 
     private void WinGame()
     {
+        _scoreToWin *= 2;
+
         Time.timeScale = 0f;
 
         _winUI.SetActive(true);
@@ -84,8 +88,17 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
 
         PlayerPrefs.DeleteAll();
+        ResetValues();
 
         _loseUI.SetActive(true);
+    }
+
+    public void ResetValues()
+    {
+        _score = 0;
+        _coinsForClick = 1;
+        _coinsPerSecond = 0;
+        _timer = 1;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -105,5 +118,13 @@ public class GameManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("score", _score);
         PlayerPrefs.SetInt("coinsPerSecond", _coinsPerSecond);
+        PlayerPrefs.SetFloat("scoreToWin", _scoreToWin);
+    }
+
+    private void LoadValues()
+    {
+        _score = PlayerPrefs.GetInt("score", 0);
+        _coinsPerSecond = PlayerPrefs.GetInt("coinsPerSecond", 0);
+        _scoreToWin = PlayerPrefs.GetFloat("scoreToWin", 500000);
     }
 }

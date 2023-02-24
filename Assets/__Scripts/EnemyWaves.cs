@@ -3,6 +3,9 @@ using System.Collections;
 
 public class EnemyWaves : MonoBehaviour
 {
+    public static EnemyWaves Instance;
+    public bool IsBattle { get { return _isBattle; } }
+
     [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private GameObject _bossPrefab;
     [SerializeField] private Transform[] _spawnPositions;
@@ -11,11 +14,38 @@ public class EnemyWaves : MonoBehaviour
     [SerializeField] private int _minTimeBetweenSpawn;
     [SerializeField] private int _maxTimeBetweenSpawn;
 
+    [SerializeField] private GameObject _warningSign;
+
     private int _waveNumber = 1;
+    private bool _isBattle = false;
+
+    [SerializeField] private float _timeFromLastCheck = 0.3f;
+
+    private void Awake()
+    {
+        Instance = this;
+
+        LoadValues();
+    }
 
     private void Start()
     {
         Invoke("SpawnEnemyWave", _timeBetweenWaves);
+    }
+
+    private void Update()
+    {
+        if (_timeFromLastCheck <= 0)
+        {
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0) _isBattle = false;
+            else _isBattle = true;
+
+            _timeFromLastCheck = 0.3f;
+        }
+
+        _timeFromLastCheck -= Time.deltaTime;
+
+        _warningSign.SetActive(_isBattle);
     }
 
     private void SpawnEnemyWave()
@@ -33,6 +63,7 @@ public class EnemyWaves : MonoBehaviour
 
         _waveNumber++;
 
+        _timeBetweenWaves += 2;
         Invoke("SpawnEnemyWave", _timeBetweenWaves);
     }
 
@@ -42,8 +73,6 @@ public class EnemyWaves : MonoBehaviour
 
         var position = GetRandomPosition();
         var enemy = Instantiate(_enemyPrefab, position, Quaternion.identity);
-
-        MusicManager.Instance.IsBattle = true;
     }
 
     private void SpawnBoss()
@@ -57,5 +86,20 @@ public class EnemyWaves : MonoBehaviour
     {
         var index = Random.Range(0, _spawnPositions.Length);
         return _spawnPositions[index].position;
+    }
+
+    public void SaveValues()
+    {
+        PlayerPrefs.SetInt("waveNumber", _waveNumber);
+    }
+
+    private void LoadValues()
+    {
+        _waveNumber = PlayerPrefs.GetInt("waveNumber", 1);
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveValues();
     }
 }
