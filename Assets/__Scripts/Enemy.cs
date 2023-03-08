@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour, IPointerClickHandler
 
     private void Update()
     {
-        _enemyRb.MovePosition(transform.position + Vector3.left * _speed * Time.deltaTime);
+        // _enemyRb.MovePosition(transform.position + Vector3.left * _speed * Time.deltaTime);
 
         if (_isAttacking && (_timeFromLastAttack <= 0))
         {
@@ -46,6 +46,11 @@ public class Enemy : MonoBehaviour, IPointerClickHandler
             _timeFromLastAttack = _timeBetweenAttack;
         }
         _timeFromLastAttack -= Time.deltaTime;
+    }
+
+    private void FixedUpdate()
+    {
+        _enemyRb.MovePosition(transform.position + Vector3.left * _speed * Time.deltaTime);
     }
 
     public void OnPointerClick(PointerEventData eventData)

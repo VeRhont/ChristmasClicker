@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     private int _coinsForClick = 1;
     private int _coinsPerSecond = 0;
 
-    [SerializeField] private float _scoreToWin = 500000f;
+    [SerializeField] private float _scoreToWin = 1000000f;
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI _roomScoreText;

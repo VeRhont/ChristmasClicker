@@ -852,7 +852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a4747145e9e0a41a9b6d2adc19cdd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1.75
+  _speed: 0.4375
   _maxHealth: 1250
   _enemyDamage: 100
   _damageOnClick: 20

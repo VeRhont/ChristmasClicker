@@ -4449,7 +4449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cdd48b72d5fba44d80c156aefe63b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scoreToWin: 200
+  _scoreToWin: 1000000
   _roomScoreText: {fileID: 969819194}
   _outsideScoreText: {fileID: 2038654306}
   _winUI: {fileID: 1779704997}
@@ -11991,7 +11991,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1499923621
 RectTransform:
   m_ObjectHideFlags: 0

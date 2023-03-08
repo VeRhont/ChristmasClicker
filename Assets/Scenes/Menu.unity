@@ -271,8 +271,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294173048
-  m_fontColor: {r: 0.4719206, g: 0.8804811, b: 0.9528302, a: 1}
+    rgba: 4294963092
+  m_fontColor: {r: 0.5801887, g: 0.93856406, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6216,8 +6216,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294173048
-  m_fontColor: {r: 0.4719206, g: 0.8804811, b: 0.9528302, a: 1}
+    rgba: 4294963092
+  m_fontColor: {r: 0.5801887, g: 0.93856406, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6494,7 +6494,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Upgrade room and get more.
+  m_text: Upgrade room and get even more.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5e42b88a318e1f84aac275754dd9f6c3, type: 2}
   m_sharedMaterial: {fileID: -8976791503161704683, guid: 5e42b88a318e1f84aac275754dd9f6c3, type: 2}
@@ -6503,8 +6503,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294173048
-  m_fontColor: {r: 0.4719206, g: 0.8804811, b: 0.9528302, a: 1}
+    rgba: 4294963092
+  m_fontColor: {r: 0.5801887, g: 0.93856406, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7298,8 +7298,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294173048
-  m_fontColor: {r: 0.4719206, g: 0.8804811, b: 0.9528302, a: 1}
+    rgba: 4294963092
+  m_fontColor: {r: 0.5801887, g: 0.93856406, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

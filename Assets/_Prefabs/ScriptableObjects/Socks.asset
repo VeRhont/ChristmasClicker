@@ -15,5 +15,5 @@ MonoBehaviour:
   _sprite: {fileID: -859737486, guid: 78db102a081e7464ebb9962663caf876, type: 3}
   _defaultSprite: {fileID: -569778061, guid: 78db102a081e7464ebb9962663caf876, type: 3}
   _price: 6000
-  _efficiency: 80
+  _efficiency: 120
   _name: socks
